@@ -1,0 +1,36 @@
+
+
+
+class Solution:
+    def letterCombinations(self, digits):
+        """
+        :type digits: str
+        :rtype: List[str]
+        """
+        shuju = {"2": "abc", "3": "def", "4": "ghi", "5": "jkl", "6": "mno", "7": "pqrs", "8": "tuv", "9": "wxyz"}
+        digits = list(digits)
+        res = []
+        while digits:
+            print(digits)
+            print(res)
+            a = digits.pop(0)
+            if res == []:  # 如果res没有值直接加进去
+                for i in shuju[a]:
+                    res.append(i)
+
+            else:
+                temp2 = []
+                for i in shuju[a]:
+                    temp = res
+
+                    def fx(x):
+                        return x + i
+
+                    temp2 += list(map(fx, temp))
+                res = temp2
+        return res
+
+l = Solution()
+str = '234'
+print(l.letterCombinations(str))
+
