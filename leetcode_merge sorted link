@@ -1,0 +1,27 @@
+class Solution:
+    def merge(self, nums1, m, nums2, n) :
+        count = 1
+        i = m - 1
+        p = n - 1
+        while i >= 0 and p >= 0:
+            if nums1[i] <= nums2[p]:
+                nums1[m + n - count] = nums2[p]
+                count += 1
+                p -= 1
+            else:
+                nums1[m + n - count] = nums1[i]
+                count += 1
+                i -= 1
+        if i < 0:
+            nums1[:p+1] = nums2[:p+1]
+        if p < 0:
+            nums1[:i+1] = nums1[:i+1]
+        return nums1
+
+
+ll = Solution()
+nums1 = [2,0]
+m = 1
+nums2 = [1]
+n = 1
+print(ll.merge(nums1,m,nums2,n))
