@@ -1,0 +1,26 @@
+#丑数定义：因数只有2,3,5  1是特殊的丑数
+#将丑数有序排列，输入n，输出第n位所对应的丑数
+
+class Solution(object):
+    def nthUglyNumber(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        if n < 0:
+            return 0
+        unli = [1]
+        cur2 = 0
+        cur3 = 0
+        cur5 = 0
+        while len(unli) <= n:
+            num = min(unli[cur2]*2,unli[cur3]*3,unli[cur5]*5)
+            unli.append(num)
+            if num == unli[cur2]*2:
+                cur2 += 1
+            if num == unli[cur3]*3:
+                cur3 += 1
+            if num == unli[cur5]*5:
+                cur5 += 1
+        return unli[n-1]
+  
