@@ -1,0 +1,17 @@
+class Solution:
+    def flipAndInvertImage(self, A: List[List[int]]) -> List[List[int]]:
+        Li = []
+        for j in range(len(A)) :
+            li = []
+            i = len(A[j]) - 1
+            while i >= 0:
+                num = A[j][i]+1
+                if num == 2:
+                    num1 = 0
+                else:
+                    num1 = 1
+                li.append(num1)
+                i -= 1
+            Li.append(li)
+        return Li
+    
