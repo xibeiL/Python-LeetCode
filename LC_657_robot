@@ -1,0 +1,19 @@
+class Solution:
+    def judgeCircle(self, moves: str) -> bool:
+        numU = 0
+        numD = 0
+        numR = 0
+        numL = 0
+        for i in moves:
+            if i == 'U':
+                numU += 1
+            if i == 'D':
+                numD += 1
+            if i == 'R':
+                numR += 1
+            if i == 'L':
+                numL += 1
+        if numU == numD and numR == numL:
+            return True
+        else:
+            return False
