@@ -1,0 +1,19 @@
+class Solution:
+    def hammingDistance(self, x: int, y: int) -> int:
+        a, b = bin(x), bin(y)
+        n = max(len(a),len(b))
+        m = min(len(a),len(b))
+        addzero = '0'*(n - m)
+        if x >= y:
+            newb = addzero + b[2:]
+            newa = a[2:]
+        else:
+            newa = addzero + a[2:]
+            newb = b[2:]
+        count = 0
+        i = 0
+        while i < n -2 :
+            if newa[i] != newb [i]:
+                count += 1
+            i += 1
+        return count
