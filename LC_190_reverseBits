@@ -1,0 +1,14 @@
+class Solution:
+    # @param n, an integer
+    # @return an integer
+    def reverseBits(self, n):
+        a = bin(n)[2:]
+        zeronum = 32 - len(a)
+        newa = '0'*zeronum + a
+        z = 31
+        s1 = ''
+        count = 0
+        while z >= 0:
+            s1 += newa[z]
+            z -= 1
+        return int(s1,2)
