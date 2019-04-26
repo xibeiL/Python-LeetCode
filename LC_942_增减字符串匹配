@@ -1,0 +1,14 @@
+class Solution:
+    def diStringMatch(self, S: str) -> List[int]:
+        nb = len(S)
+        ns = 0
+        A =[]
+        for a in S:
+            if a == 'I':
+                A.append(ns)
+                ns += 1   
+            else:
+                A.append(nb)
+                nb -= 1
+        A.append(nb)
+        return A
