@@ -1,0 +1,15 @@
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        sumli = []
+        sumnum = 0
+        while sumnum not in sumli:
+            sumli.append(sumnum)
+            sumnum = 0
+            li = list(map(int, str(n)))
+            for i in li :
+                sumnum += i**2
+            if sumnum == 1:
+                return True
+            else:
+                n = sumnum
+        return False
