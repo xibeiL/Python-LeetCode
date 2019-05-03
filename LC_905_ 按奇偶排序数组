@@ -1,0 +1,11 @@
+class Solution:
+    def sortArrayByParity(self, A: List[int]) -> List[int]:
+        le = 0
+        ri = len(A) - 1
+        while le != ri:
+            if A[le] % 2 == 0:
+                le += 1
+            else:
+                A[le],A[ri] = A[ri],A[le]
+                ri -= 1
+        return A
