@@ -27,3 +27,13 @@ class Solution:
                 if i < j :
                     cut.append(j - i)
         return min(cut)
+
+
+
+        # newli = sorted(treeli)
+        # n = len(newli) 
+        # cut = []
+        # while n > 1:
+        #     cut.append(newli[n-1] - newli[n-2])
+        #     n -= 1
+        # return min(cut)
