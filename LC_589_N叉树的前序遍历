@@ -1,0 +1,41 @@
+ 589. N-ary Tree Preorder Traversal
+
+recursive
+
+class Solution(object):
+    def preorder(self, root):
+        """
+        :type root: Node
+        :rtype: List[int]
+        """
+        preval = []
+        if not root:return []
+        def pretraversal(root):
+            preval.append(root.val)
+            for i in range(len(root.children)):
+                pretraversal(root.children[i])
+        pretraversal(root)
+        return preval
+iterative
+
+class Solution(object):
+    def preorder(self, root):
+        """
+        :type root: Node
+        :rtype: List[int]
+        """
+        if not root:return []
+        preval = []
+        stack = []
+        stack.append(root)
+        while(stack):
+            node = stack.pop()
+            preval.append(node.val)
+            for child in node.children[::-1]:
+                stack.append(child)
+        return preva
+--------------------- 
+作者：momottyy 
+来源：CSDN 
+原文：https://blog.csdn.net/maotianyi941005/article/details/86520503 
+版权声明：本文为博主原创文章，转载请附上博文链接！
