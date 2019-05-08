@@ -59,3 +59,44 @@ class Solution:
 # Tree.left.right = TreeNode(7)
 # Tree.right.right = TreeNode(18)
 # print(s.rangeSumBST(Tree,7,15))
+
+
+
+
+
+
+
+
+
+class TreeNode:
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
+class Solution:
+    def rangeSumBST(self, root, L, R):
+        res = [0]
+        t = 0
+        self.dfs(root, L, R, res, t)
+        return res[0],t
+    def dfs(self, root, L, R, res,t):
+        if not root:
+            return
+        if L <= root.val <= R:
+            res[0] += root.val
+            t += root.val
+        if root.val < R:
+            self.dfs(root.right, L, R, res, t)
+        if root.val > L:
+            self.dfs(root.left, L, R, res, t)
+
+
+
+s = Solution()
+Tree = TreeNode(10)
+Tree.left = TreeNode(5)
+Tree.right = TreeNode(15)
+Tree.left.left = TreeNode(3)
+Tree.left.right = TreeNode(7)
+Tree.right.right = TreeNode(18)
+print(s.rangeSumBST(Tree,7,15))
