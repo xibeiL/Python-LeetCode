@@ -12,3 +12,7 @@ class Solution:
                 nb -= 1
         A.append(nb)
         return A
+        
+        
+        
+        ###
