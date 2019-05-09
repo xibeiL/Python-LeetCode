@@ -1,0 +1,18 @@
+class Solution:
+    def selfDividingNumbers(self, left: int, right: int) -> List[int]:
+        res = []
+        for i in range(left, right + 1):
+            flag = 1  # flag = 1 表示是自然数  反之 ，不是自然数
+            li = []
+            self.eachnum(i, li)
+            for j in li:
+                if j == 0 or i % j != 0:
+                    flag = 0           
+            if flag == 1:
+                res.append(i)
+        return res
+    def eachnum(self,i, li):
+        if i == 0:
+            return li
+        li.append(i % 10)
+        self.eachnum(i // 10, li)
