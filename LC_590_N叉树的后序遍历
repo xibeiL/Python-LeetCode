@@ -1,0 +1,48 @@
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, val, children):
+        self.val = val
+        self.children = children
+"""
+class Solution:
+    def postorder(self, root: 'Node') -> List[int]:
+        if not root:
+            return []
+        li = [root]
+        ans = []
+        while li:
+            p = li.pop()
+            ans.append(p.val)
+            for i in p.children:
+                li.append(i)
+        return ans[::-1]
+        
+        
+        
+        
+        
+        
+        
+        
+        """
+# Definition for a Node.
+class Node:
+    def __init__(self, val, children):
+        self.val = val
+        self.children = children
+"""
+
+class Solution(object):
+    def postorder(self, root):
+        """
+        :type root: Node
+        :rtype: List[int]
+        """
+        if not root:
+            return []
+        res = []
+        for leaf in root.children:
+            res += self.postorder(leaf)
+        
+        return res + [root.val]
