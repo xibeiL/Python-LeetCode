@@ -3,31 +3,30 @@ class Solution:
         return (bin(int(a,2)+int(b,2)))[2:]
         
         
-思路二：设置进位flag，同时也作为每次相加的和。然后循环，条件是flag==1或者两个字符串有一个没有遍历完成。然后每次flag+各字符串当前坐标下的值-‘0’；
-最后，将flag%2转换为字符加到要返回的string前面，并且flag/2获取下一次的进位值。最后循环结束，返回string。
-class Solution(object):
+class Solution:
     def addBinary(self, a, b):
-        """
-        :type a: str
-        :type b: str
-        :rtype: str
-        """
-        sum=""
-        flag=0
-        i=len(a)-1
-        j=len(b)-1
-        while flag==1 or i>=0 or j>=0:
-            if i>=0:
-                flag=flag+ord(a[i])-ord('0')
-                i-=1
-            if j>=0:
-                flag=flag+ord(b[j])-ord('0')
-                j-=1
-            sum=str(flag%2)+sum
-            flag=flag/2
-        return sum
+
+        n, m = len(a)-1, len(b)-1
+        res, s = [], 0  # s 表示进位情况
+
+        while n >= 0 or m >= 0 or s:
+            if n >= 0:
+                s += int(a[n])
+                n -= 1
+            if m >= 0:
+                s += int(b[m])
+                m -= 1
+            res.append(str(s % 2))
+            s //= 2  # 处理进位情况
+
+        return ''.join(res[::-1])
+
+
+if __name__ == '__main__':
+    a, b = '1010', '1011'
+    print(Solution().addBinary(a, b))
 --------------------- 
-作者：夏洛的网 
+作者：GorillaNotes 
 来源：CSDN 
-原文：https://blog.csdn.net/liuxiao214/article/details/77841318 
+原文：https://blog.csdn.net/XX_123_1_RJ/article/details/84635787 
 版权声明：本文为博主原创文章，转载请附上博文链接！
