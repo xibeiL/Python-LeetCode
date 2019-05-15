@@ -1,0 +1,36 @@
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        le = 0
+        ri = len(str(x)) -1
+        while le < ri:
+            if str(x)[le] == str(x)[ri]:
+                le += 1
+                ri -= 1
+            else:
+                return False
+        return True
+        
+        
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        if x < 0:
+            return False
+        else:
+            return str(x) == str(x)[::-1] 
+            
+            
+            
+def isPalindrome(num):
+    if num < 0:
+        return False
+
+    p, q = num, 0
+    while p:
+        q = q * 10 + p % 10
+        p =int(p/ 10)													#同p//=10
+    return q == num
+--------------------- 
+作者：瑶子ove 
+来源：CSDN 
+原文：https://blog.csdn.net/weixin_40924580/article/details/82874625 
+版权声明：本文为博主原创文章，转载请附上博文链接！
