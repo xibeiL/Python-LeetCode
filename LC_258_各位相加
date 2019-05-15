@@ -1,0 +1,32 @@
+class Solution:
+    def addDigits(self, num: int) -> int: 
+        return num and (num%9 or 9)
+
+
+
+
+class Solution:
+    def addDigits(self, num: int) -> int: 
+        ans = self.addSum(num)
+        while ans> 9:
+            ans = self.addSum(ans)
+        return ans
+    def addSum(self,num):
+        ans = 0
+        for i in str(num):
+            ans += int(i)
+        return ans
+        
+        
+        
+class Solution:
+    def addDigits(self, num: int) -> int: 
+        ans = 0
+        for i in str(num):
+            ans += int(i)
+        while ans > 9:
+            addsum = 0
+            for i in str(ans):
+                addsum += int(i)
+            ans = addsum
+        return ans       
