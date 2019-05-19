@@ -1,0 +1,11 @@
+class Solution:
+    def arrayPairSum(self, nums: List[int]) -> int:
+        newnums = sorted(nums)
+        sumnums = 0
+        for i in range(0,len(nums),2):
+            sumnums += newnums[i]
+        return sumnums
+        
+        
+        
+return sum(sorted(nums)[::2])
