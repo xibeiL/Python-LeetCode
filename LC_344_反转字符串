@@ -36,3 +36,19 @@ class Solution(object):
         for i, j in zip(range(l - 1, 0, -1), range(l // 2)):
             t[i], t[j] = t[j], t[i]         
         return ''.join(t)
+  
+  
+  
+  
+class Solution:
+    def reverseString(self, s: List[str]) -> None:
+        """
+        Do not return anything, modify s in-place instead.
+        """
+        if len(s)<=1:
+            return
+        head = s.pop(0)
+        tail = s.pop() #unnecessary
+        self.reverseString(s)
+        s.append(head)
+        s.insert(0, tail) #unnecessary
