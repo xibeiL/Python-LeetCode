@@ -1,0 +1,38 @@
+class Solution:
+    def reverseString(self, s: List[str]) -> None:
+        """
+        Do not return anything, modify s in-place instead.
+        """
+        return s[::-1]
+        
+        
+
+class Solution:
+    def reverseString(self, s):
+        """
+        :type s: List[str]
+        :rtype: void Do not return anything, modify s in-place instead.
+        """
+        l = len(s)
+        for i in range(l//2):
+            s[i],s[l-1-i] = s[l-1-i],s[i]
+        #s[:] = s[::-1]
+--------------------- 
+作者：Aries888 
+来源：CSDN 
+原文：https://blog.csdn.net/qq_38575545/article/details/86600095 
+版权声明：本文为博主原创文章，转载请附上博文链接！
+
+
+
+class Solution(object):
+    def reverseString(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        t = list(s)
+        l = len(t)
+        for i, j in zip(range(l - 1, 0, -1), range(l // 2)):
+            t[i], t[j] = t[j], t[i]         
+        return ''.join(t)
