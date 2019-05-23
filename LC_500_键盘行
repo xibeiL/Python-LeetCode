@@ -1,0 +1,82 @@
+class Solution:
+    def findWords(self, words: List[str]) -> List[str]:
+        ans = []
+        for i in words:
+            res = self.judge(i)
+            if res:
+                ans.append(i)
+        return ans
+    def judge(self,s):
+        ns = s.lower()
+        flag = 1 # 该字符串符合条件
+        l1 = ['q','w','e','r','t','y','u','i','o','p']
+        l2 = ['a','s','d','f','g','h','j','k','l']
+        l3 = ['z','x','c','v','b','n','m']
+        i = 0
+        while i < len(s) - 1:
+            if ns[i] in l1 and ns[i+1] in l1:
+                 i += 1
+            elif ns[i] in l2 and ns[i+1] in l2:
+                i += 1
+            elif ns[i] in l3 and ns[i+1] in l3:
+                i += 1
+            else:
+                flag = 0
+                break
+        return flag
+        
+        
+        
+        
+        
+class Solution(object):
+    def findWords(self, words):
+        """
+        :type words: List[str]
+        :rtype: List[str]
+        """
+        keyboard = ["qwertyuiop", "asdfghjkl", "zxcvbnm"]
+
+        out = []
+
+        for i in words:
+            for line in keyboard:
+                lword = i.lower()
+                if set(lword).issubset(set(line)):
+                    out.append(i)
+
+        return out
+--------------------- 
+作者：panda爱学习 
+来源：CSDN 
+原文：https://blog.csdn.net/nxhyd/article/details/72478512 
+版权声明：本文为博主原创文章，转载请附上博文链接！
+
+
+
+
+
+
+
+
+
+
+
+class Solution(object):
+    def findWords(self, words):
+        """
+        :type words: List[str]
+        :rtype: List[str]
+        """
+        wset = map(set,['qwertyuiop','asdfghjkl','zxcvbnm'])
+        ans = []
+        for word in words:
+            wordi = set(word.lower())
+            if any(wordi <= rset for rset in wset):
+                ans.append(word)
+        return ans
+--------------------- 
+作者：panda爱学习 
+来源：CSDN 
+原文：https://blog.csdn.net/nxhyd/article/details/72478512 
+版权声明：本文为博主原创文章，转载请附上博文链接！
