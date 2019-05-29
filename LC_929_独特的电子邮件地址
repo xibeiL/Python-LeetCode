@@ -1,0 +1,73 @@
+class Solution:
+    def numUniqueEmails(self, emails: List[str]) -> int:
+        newl = []
+        for i in emails:
+            newl.append(self.email(i))   
+        d = {}
+        for i in newl:
+            if i not in d.keys():
+                d[i] = 1
+        return len(d)
+                   
+    def email(self,s):
+        l = list(s)
+        n = l.index('@')
+        news = ''
+        i = 0
+        while i < n:
+            if l[i] == '.':
+                i += 1
+            elif l[i] == '+':
+                i = n
+            else:
+                news += l[i]
+                i += 1
+        news += s[n:]
+        return news
+        
+        
+class Solution(object):
+    def numUniqueEmails(self, emails):
+        """
+        :type emails: List[str]
+        :rtype: int
+        """
+        eset = set()
+        for email in emails:
+            simper = self.simpifyEmail(email)
+            eset.add(simper)
+        return len(eset)
+    
+    def simpifyEmail(self, email):
+        local, domain = email.split("@")
+        local = local.replace('.', '')
+        plus_i = local.find('+')
+        if plus_i != -1:
+            local = local[:plus_i]
+        return local + "@" + domain
+--------------------- 
+作者：负雪明烛 
+来源：CSDN 
+原文：https://blog.csdn.net/fuxuemingzhu/article/details/83478570 
+版权声明：本文为博主原创文章，转载请附上博文链接！        
+        
+        
+        
+        
+class Solution:
+  def numUniqueEmails(self, emails):
+        """
+        :type emails: List[str]
+        :rtype: int
+        """
+        res = set()
+        for email in emails:
+            name, domain = email.split("@")
+            name = name.split("+")[0].replace(".", "")
+            res.add(name + "@" + domain)
+        return len(res)
+--------------------- 
+作者：负雪明烛 
+来源：CSDN 
+原文：https://blog.csdn.net/fuxuemingzhu/article/details/83478570 
+版权声明：本文为博主原创文章，转载请附上博文链接！
