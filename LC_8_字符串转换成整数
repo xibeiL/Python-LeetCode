@@ -1,0 +1,89 @@
+class Solution:
+    def myAtoi(self, str):
+        book=0 #标记是否出现过有效字符
+        sign=0 #标记符号
+        label=0 #标记符号之前是否出现过有效字符
+        
+        a=[]
+        for i in str:
+            if i==' 'and book==0:
+                continue
+            if i=='+':
+                if label==0:
+                    book=1
+                    label=1
+                    continue
+                else:
+                    break
+            if i=='-':
+                if label==0:
+                    book=1
+                    sign=1
+                    label=1
+                    continue
+                else:
+                    break
+            if 47<ord(i)<58:
+                a.append(i)
+                book=1
+                label=1
+            else:
+                break
+        if len(a)==0:
+            result=0
+        else:
+            if sign==0:
+                result=int(''.join(a)) #''.join(a)把列表变成字符串
+            else:
+                result=(-1)*int(''.join(a))
+        if result>pow(2,31)-1:
+            return (pow(2,31)-1)
+        if result<(-1)*pow(2,31):
+            return (-1)*pow(2,31)
+        else:
+            return result
+--------------------- 
+作者：花树堆雪 
+来源：CSDN 
+原文：https://blog.csdn.net/qq_42820064/article/details/83281270 
+版权声明：本文为博主原创文章，转载请附上博文链接！
+
+
+
+
+
+class Solution(object):
+    def myAtoi(self, str):
+        """
+        :type str: str
+        :rtype: int
+        """
+        str = str.strip()
+        strtoNum = 0
+        if len(str) == 0:
+            return strtoNum
+        flag = True
+        if str[0] == '+' or str[0] == '-':
+            if str[0] == '-':
+                flag = False
+            str = str[1:]
+
+        for char in str:
+            if char >= '0' and char <= '9':
+                strtoNum = strtoNum * 10 + ord(char) - ord('0')
+            if char < '0' or char > '9':
+                break
+
+        if strtoNum > 2147483647:
+            if flag == False:
+                return -2147483648
+            else:
+                return 2147483647
+        if not flag:
+            strtoNum = - strtoNum
+        return strtoNum
+--------------------- 
+作者：Laurel1115 
+来源：CSDN 
+原文：https://blog.csdn.net/Laurel1115/article/details/87949481 
+版权声明：本文为博主原创文章，转载请附上博文链接！
