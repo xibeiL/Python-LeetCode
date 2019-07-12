@@ -1,0 +1,36 @@
+class Solution(object):
+    def findDisappearedNumbers(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        li = [i for i in range(1,len(nums)+1)]
+        s1 = set(li)
+        s2 = set(nums)
+        s3 = s1 - s2
+        res = []
+        for i in s3:
+            res.append(i)
+        return res
+       
+       
+       
+       
+    class Solution:
+    def findDuplicates(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        res=[]
+        for n in nums:
+            index=abs(n)-1
+            if nums[index]<0:
+                res.append(index+1)
+            nums[index]=-nums[index]
+        return res
+--------------------- 
+作者：Neekity 
+来源：CSDN 
+原文：https://blog.csdn.net/Neekity/article/details/84706598 
+版权声明：本文为博主原创文章，转载请附上博文链接！
