@@ -1,0 +1,19 @@
+###用冒泡超时。。。。。。
+
+
+
+j = 0
+for i in range(len(nums)):
+    if nums[i] != 0:
+        nums[j], nums[i] = nums[i], nums[j]
+        j += 1
+###用j记录零的位置
+
+
+n = nums.count(0)
+for i in range(n):
+    nums.remove(0)
+nums.extend([0]*n)
+
+
+###别人的方法
