@@ -1,0 +1,14 @@
+###普通方法：nums[i]中每一位存储   max（之前元素之和，当前元素）
+
+class Solution(object):
+    def maxSubArray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        for i in range(len(nums))[1::]:
+            nums[i] = max(nums[i],nums[i]+nums[i-1])
+        return max(nums)
+        
+        
+        
