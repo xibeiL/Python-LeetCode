@@ -1,0 +1,15 @@
+'''
+插入排序
+'''
+def insertSort(li):
+    for i in range(1,len(li)):
+        for j in range(i,0,-1):
+            if li[j] < li[j-1]:
+                li[j],li[j-1] = li[j-1],li[j]
+            else:
+                break
+    return li
+if __name__ =='__main__':
+    a = [14,12,15,13,19,16,20]
+    print(a)
+    print(insertSort(a))
