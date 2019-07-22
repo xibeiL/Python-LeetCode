@@ -1,0 +1,29 @@
+####   感觉自己太笨了
+
+#####
+class Solution(object):
+    def findUnsortedSubarray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        l = 0 
+        r = len(nums) - 1
+        li = sorted(nums)
+        res = []
+        while l <= r:
+            if nums[l] == li[l]:
+                l += 1
+            else:
+                res.append(l)
+                break
+        while r >= l:
+            if nums[r] == li[r]:
+                r -= 1
+            else:
+                res.append(r)
+                break
+        if not res:
+            return 0
+        else:
+            return res[-1] - res[0] + 1
