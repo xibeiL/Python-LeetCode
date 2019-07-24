@@ -1,0 +1,48 @@
+#####自己超级low的做法####
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    def hasCycle(self, head):
+        """
+        :type head: ListNode
+        :rtype: bool
+        """
+        if not head:
+            return False
+
+        li = []
+        cur = head
+        while cur:
+            li.append(cur)
+            if cur.next in li:
+                return True
+            else:
+                cur = cur.next
+        return False
+            
+            
+            
+            
+#####优雅的做法####
+class Solution(object):
+    def hasCycle(self, head):
+        """
+        :type head: ListNode
+        :rtype: bool
+        """
+        fast = slow = head
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next
+            if slow == fast:
+                return True
+        return False
+--------------------- 
+作者：神不烦 
+来源：CSDN 
+原文：https://blog.csdn.net/qq_34364995/article/details/80518191 
+版权声明：本文为博主原创文章，转载请附上博文链接！
