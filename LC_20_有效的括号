@@ -1,0 +1,18 @@
+class Solution(object):
+    def isValid(self, s):
+
+        if len(s) % 2 == 1:
+            return False
+        d = {'{': '}', '[': ']', '(': ')'}
+        stack = []
+        for i in s:
+            if i in d:
+                stack.append(i)
+            else:
+                if not stack or d[stack.pop()] != i:
+                    return False
+        else:
+            if stack:
+                return False
+
+        return True
