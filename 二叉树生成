@@ -1,0 +1,29 @@
+'''
+构造二叉树
+'''
+class Node(object):
+    def __init__(self,val):
+        self.val = val
+        self.left = None
+        self.right = None
+class Tree(object):
+    def __init__(self):
+        self.root = None
+    def addnode(self,item):
+        node = Node(item)
+        if not self.root:
+            self.root = node
+            return
+        queue = [self.root]
+        while queue:
+            curnode = queue.pop(0)
+            if not curnode.left:
+                curnode.left = node
+                return 
+            else:
+                queue.append(curnode.left)
+            if not curnode.right:
+                curnode.right = node
+                return 
+            else:
+                queue.append(curnode.right)
