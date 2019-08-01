@@ -1,0 +1,37 @@
+'''
+二分法 ：对有序数组进行查找
+'''
+def solution(li,target):
+    l = len(li)
+    while l > 0:
+        if li[l//2] == target:
+            return True
+        elif li[l//2] < target:
+            return solution(li[l//2+1:],target)
+        else:
+            return solution(li[:l//2],target)
+    return False
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+def solution(li,target):
+    left = 0
+    right = len(li) - 1
+
+    while left <= right:
+        mid = (left + right) // 2
+        if li[mid] == target:
+            return True
+        elif li[mid] > target:
+            right = mid - 1
+        else:
+            left = mid + 1
+    return False
