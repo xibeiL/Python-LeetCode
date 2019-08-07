@@ -1,0 +1,43 @@
+#双端队列：队列两端都允许元素进出
+#操作：创建一个空的双端队列 deque()
+#      在队列头部添加一个元素 add_front(item)
+#      在队列头部删除一个元素 remove_front()
+#      在队尾添加一个元素 add_rear(item)
+#      在队尾删除一个元素 remove_rear()
+#      判断队列是否为空 is_empty()
+#      返回队列大小 size()
+
+class Deque(object):
+    def __init__(self):
+        self.__deque = []
+    def add_front(self,item):
+        self.__deque.insert(0,item)
+    def remove_front(self):
+        if self.__deque == []:
+            return False
+        else:
+            del self.__deque[0]
+    def add_rear(self,item):
+        self.__deque.append(item)
+    def remove_rear(self):
+        if self.__deque == []:
+            return False
+        else:
+            self.__deque.pop()
+    def is_empty(self):
+        return self.__deque == []
+    def size(self):
+        return len(self.__deque)
+
+if __name__ == '__main__':
+    ll = Deque()
+    print(ll.size())
+    print(ll.is_empty())
+    ll.add_rear(2)
+    ll.add_rear(3)
+    ll.add_front(1)
+    print(ll.is_empty())
+    print(ll.size())
+    ll.remove_front()
+    ll.remove_rear()
+    print(ll.size())
