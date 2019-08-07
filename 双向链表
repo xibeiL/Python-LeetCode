@@ -1,0 +1,105 @@
+# class Node(object):
+#     def __init__(self,item):
+#         self.elem = item
+#         self.pre = None
+#         self.next = None
+# class DoubleLinkList(object):
+#     def __init__(self,node = None):
+#         self.__head = node
+#     def is_empty(self):
+#         return self.__head == None
+#     def length(self):
+#         cur = self.__head
+#         count = 0
+#         while cur != None:
+#             count += 1
+#             cur = cur.next
+#         return count
+#     def append(self,item):
+#         cur = self.__head
+#         node = Node(item)
+#         if self.__head == None:
+#             self.__head = node
+#         else:
+#             while cur.next != None:
+#                 cur = cur.next
+#             node.pre = cur
+#             cur.next = node
+#     def add(self,item):
+#         node = Node(item)
+#         if self.is_empty():
+#             self.__head = node
+#         else:
+#             node.next = self.__head
+#             self.__head.pre = node
+#             self.__head = node
+#
+#     def insert(self,pos,item):
+#         if pos <= 0:
+#             self.add(item)
+#         elif pos > (self.length()-1):
+#             self.append(item)
+#         else:
+#             cur = self.__head
+#             count = 0
+#             while count < pos:
+#                 cur = cur.next
+#                 count += 1
+#             node = Node(item)
+#             node.next = cur
+#             node.pre = cur.pre
+#             cur.pre.next = node
+#             cur.pre = node
+#     def search(self,item):
+#         cur = self.__head
+#         while cur != None:
+#             if cur.elem == item:
+#                 return True
+#             else:
+#                 cur = cur.next
+#         return False
+#     def remove(self,item):
+#         cur = self.__head
+#         while cur != None:
+#             if cur.elem == item:
+#                 if cur.next == None:
+#                     if self.length() == 1:
+#                         self.__head = None
+#                         return
+#                     else:
+#                         cur.pre.next = None
+#                         return
+#                 elif cur == self.__head:
+#                     self.__head = cur.next
+#                     cur.next.pre = None
+#                     return
+#                 else:
+#                     cur.pre.next = cur.next
+#                     cur.next.pre = cur.pre
+#                     return
+#             else:
+#                 cur = cur.next
+#         return False
+#     def travel(self):
+#         cur = self.__head
+#         while cur != None:
+#             print(cur.elem,end=' ')
+#             cur = cur.next
+#         print('')
+#
+#
+#
+# if __name__ == '__main__':
+#     ll = DoubleLinkList()
+#
+#     ll.append(1)
+#     ll.append(2)
+#     ll.append(3)
+#     ll.append(4)
+#     ll.append(5)
+#     ll.append(6)
+#     ll.append(7)
+#     ll.travel()
+#     # print(ll.search(5))
+#     ll.remove(77)
+#     ll.travel()
