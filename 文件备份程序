@@ -1,0 +1,12 @@
+#文件备份程序
+userInput = input('请输入需要备份的文件名：')
+oriFile = open(userInput,'r')
+num = userInput.rfind('.')
+newFileName = userInput[0:num]+'[备份]'+userInput[num:]
+copyFile = open(newFileName,'w')
+content = oriFile.readline()
+while len(content) > 0:
+    copyFile.write(content)
+    content = oriFile.readline()
+copyFile.close()
+oriFile.close()
