@@ -1,0 +1,196 @@
+#单向循环链表
+class Node(object):
+    def __init__(self,item):
+        self.elem = item
+        self.next = None
+class SingleCycleLinkList(object):
+    def __init__(self,node = None):
+        self.__head = node
+        if node:
+             node.next = node
+    def is_empty(self):
+        return self.__head == None
+    def length(self):
+        if self.__head == None:
+            return 0
+        else:
+            cur = self.__head
+            count = 1
+            while cur.next != self.__head :
+                count += 1
+                cur = cur.next
+            return count
+    def travel(self):
+        cur = self.__head
+        if self.is_empty():
+            return False
+        else:
+            while cur.next != self.__head:
+                print('%d'%cur.elem,end=' ')
+                cur = cur.next
+            print('%d'%cur.elem,end=' ')
+            print('')
+    def add(self,item):
+        node = Node(item)
+        cur = self.__head
+        if self.is_empty():
+            self.__head = node
+            node.next = self.__head
+        else:
+            while cur.next != self.__head:
+                cur = cur.next
+            node.next = self.__head
+            self.__head = node
+            cur.next = node
+    def append(self,item):
+        cur = self.__head
+        node = Node(item)
+        if self.is_empty():
+            self.__head = node
+            node.next = self.__head
+        else:
+            while cur.next != self.__head:
+                cur = cur.next
+            node.next = self.__head
+            cur.next = node
+    def insert(self,pos,item):
+        if pos >= self.length():
+            self.append(item)
+        elif pos <= 0:
+            self.add(item)
+        else:
+            cur =self.__head
+            pre = None
+            count = 0
+            while count < pos:
+                pre = cur
+                cur = cur.next
+                count += 1
+            node = Node(item)
+            node.next = cur
+            pre.next = node
+    def search(self,item):
+        if self.is_empty():
+            return False
+        else:
+            cur = self.__head
+            while cur.next != self.__head:
+                if cur.elem == item:
+                    return True
+                else:
+                    cur = cur.next
+            if cur.elem == item:
+                return True
+
+            return False
+    # def remove(self,item):
+    #     cur = self.__head
+    #     pre = None
+    #     if self.is_empty():
+    #         return False
+    #     else:
+    #
+    #         while cur.next != self.__head:
+    #             if cur.elem == item:
+    #                 if cur == self.__head:
+    #
+    #                     now = self.__head
+    #                     while now.next != self.__head:
+    #                         now = now.next
+    #                     self.__head = cur.next
+    #
+    #                     now.next = self.__head
+    #                   return
+    #                 else:
+    #                     pre.next = cur.next
+    #                 return
+    #             else:
+    #                 pre = cur
+    #                 cur = cur.next
+    #         if cur.elem == item:
+    #             if cur == self.__head:
+    #                 self.__head = None
+    #             else:
+    #                 pre.next = self.__head
+    #
+    #
+    #
+    #
+    # #
+    #
+    # # def remove(self, item):
+    # #     cur = self.__head
+    # #     pre = None
+    # #     # list = []
+    # #     while cur != None:
+    #         # 找到了指定元素
+    #         if cur.elem == item:
+    #             # 如果第一个就是删除的节点
+    #             if cur == self.__head:
+    #                 # 将头指针指向头节点的后一个节点
+    #                 # list.append(self.__head)
+    #                 self.__head = cur.next
+    #                 # pre = cur
+    #                 # cur = cur.next
+    #             else:
+    #                 # 将删除位置前一个节点的next指向删除位置的后一个节点
+    #                 # list.append(pre)
+    #                 pre = cur.next
+    #                 # pre = cur
+    #                 # cur = cur.next
+    #         # else:
+    #         #     pre = cur
+    #         #     cur = cur.next
+    #         pre = cur
+    #         cur = cur.next
+
+
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+class Solution:
+    def removeElements(self, head: ListNode, val: int) -> ListNode:
+        pnode = ListNode(None)
+        pnode.next = head
+        cur = pnode.next
+        pre = pnode
+        while cur:
+            if cur.val == val:
+                pre.next = cur.next
+            else:
+                cur = cur.next
+            pre = pre.next
+
+        return pnode.next
+
+
+
+
+
+
+if __name__ == '__main__':
+
+    ll = SingleCycleLinkList()
+
+    # print(ll.is_empty())
+    # print(ll.length())
+
+
+    ll.append(3)
+    ll.append(1)
+    ll.append(2)
+    ll.append(3)
+    ll.append(4)
+    ll.append(5)
+    ll.append(3)
+    ll.append(3)
+    ll.travel()
+    # print(ll.search(8))
+    ll = Solution()
+
+    ll.removeElements(None,3)
+    ll = SingleCycleLinkList()
+    ll.travel()
+    # ll.numremove(3)
+    # print(type(ll.travel()))
