@@ -1,0 +1,16 @@
+#设计一个判断输入是否是标识符的程序
+#标识符：由字母，数字，下划线组成，数字不能开头，不能是关键字
+while True:
+    import keyword
+    userInput = input('请输入需要判断的字符串')
+    if userInput not in keyword.kwlist:
+        if not userInput.isdigit():
+            userInput_1 = userInput.replace('_',' ')
+            if userInput_1.isalnum():
+                print('yes')
+            else:
+                print('no ，含有特殊符号')
+        else:
+            print('no，首字母不能是数字')
+    else:
+        print('no,你输入的是关键字')
