@@ -1,0 +1,33 @@
+#队列的特点：先进先出 FIFO
+#队列的操作：创建一个空的队列  queue
+#           向队尾添加一个元素   enqueue(item)
+#           在队头删除一个元素  dequeue()
+#           判断队列是否为空   is_empty()
+#           返回队列的大小 size()
+class Queue(object):
+    def __init__(self):
+        self.__queue = []
+    def enqueue(self,item):
+        self.__queue.append(item)
+    def dequeue(self):
+        if len(self.__queue) == 0:
+            return False
+        else:
+            del self.__queue[0]
+    def is_empty(self):
+        return self.__queue == []
+    def size(self):
+        return len(self.__queue)
+if __name__ == '__main__':
+    ll = Queue()
+    print(ll.is_empty())
+    print(ll.size())
+    ll.enqueue(1)
+    ll.enqueue(2)
+    ll.enqueue(3)
+    ll.enqueue(4)
+    ll.enqueue(5)
+    print(ll.is_empty())
+    print(ll.size())
+    ll.dequeue()
+    print(ll.size())
