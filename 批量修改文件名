@@ -1,0 +1,13 @@
+#批量修改文件名
+'''
+1获取指定文件夹中的所有文件名字，存放在一个变量中
+2采用循环方式对文件名进行修改
+2.1循环打开
+2.2组织洗呢文件名
+2.3重命名文件
+'''
+import os
+movieName = os.listdir('./movies')
+for temp in movieName:
+    newName = temp
+    os.rename('./movies/'+temp,'./movie/'+newName)
