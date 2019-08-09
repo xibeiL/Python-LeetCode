@@ -1,0 +1,52 @@
+'''
+两个链表的公共交点
+'''
+class Solution(object):
+    def getIntersectionNode(self, headA, headB):
+        """
+        :type head1, head1: ListNode
+        :rtype: ListNode
+        """
+        la = 0, lb = 0
+        cura = headA
+        curb = headB
+        while cura:
+            la += 1
+            cura = cura.next
+        while curb:
+            lb += 1
+            curb = curb.next
+
+        cut =  abs(la - lb)
+        taga = headA
+        tagb = headB
+        if la >= lb:
+            for i in range(cut):
+                taga = taga.next
+        else:
+            for i in range(cut):
+                tagb = tagb.next
+        while taga:
+            if taga == tagb:
+                return taga
+            else:
+                taga = taga.next
+                tagb = tagb.next
+                
+                
+############################################################################################################
+
+
+
+
+class Solution(object):
+    def getIntersectionNode(self, headA, headB):
+        """
+        :type head1, head1: ListNode
+        :rtype: ListNode
+        """
+        p, q = headA, headB
+        while p != q:
+            q = headB if q is None else q.next
+            p = headA if p is None else p.next
+        return p
