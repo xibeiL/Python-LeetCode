@@ -14,3 +14,43 @@ class Solution:
             li.append(i.val)
             i = i.next
         return li == li[::-1]
+
+
+
+
+
+
+class Node:
+    def __init__(self,val):
+        self.next = None
+        self.val = val
+class Judge:
+    def judeList(self,head):
+        if not head:            # head.val 不是 None，表示链表的数据
+            return False
+        if not head.next:
+            return True
+        slow = head
+        fast = head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+                                   #如果len是奇数，slow位于中位，如果len是偶数，slow位于后中位
+                                   #if not fast:此时len是奇数  if not fast.next：此时len是偶数
+                                   #但是都是对slow.next后面的部分进行翻转
+        pre = None   #逆序链表结束时应该指向 None
+        cur = slow
+        nxt = cur.next
+        while nxt:   # 注意不要 None没有.next属性 所以判断条件是 nxt 而不是 cur
+            cur.next = pre
+            pre = cur
+            cur = nxt
+            nxt = cur.next
+        cur.next = pre
+
+        while cur.next:
+            if cur.val != head.val:
+                return False
+            cur = cur.next
+            head = head.next
+        return cur.val == head.val
