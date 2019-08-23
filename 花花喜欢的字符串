@@ -1,0 +1,21 @@
+def solution(s,num):
+    res = []
+    n = len(s)
+    for i in range(n):
+        for j in range(n-i):
+            res.append(s[j:j+i+1])
+    count = 0
+    for i in res:
+        if int(i)%1000000007==num:
+            count+=1
+    return count
+
+
+
+inputs = input()
+inputime = int(input())
+target = []
+for i in range(inputime):
+    target.append(int(input()))
+for j in range(inputime):
+    print(solution(inputs,target[j]))
