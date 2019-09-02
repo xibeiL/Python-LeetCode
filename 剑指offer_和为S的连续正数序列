@@ -1,0 +1,18 @@
+def solution(tsum):
+    small = 1
+    big = 2
+    count = small+big
+    half = (tsum+1)//2
+    res = []
+    while small<half:
+        if count == tsum:
+            res.append(range(small,big+1))
+        while count>tsum and small<half: ##为什么用while，因为有可能减去small之后依然比tsum大，所以要一直减到小于tsum为止
+            count -= small
+            small += 1
+            if count == tsum:
+                res.append(range(small,big+1))
+        big += 1
+        count += big
+    return res
+print(solution(9))
